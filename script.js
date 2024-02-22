@@ -5,7 +5,7 @@ const nextButton = document.getElementById("next");
 const previousButton = document.getElementById("previous");
 const shuffleButton = document.getElementById("shuffle");
 
-const allSongs = [
+const allSongs = [ // add songs
   {
     id: 0,
     title: "Scratching The Surface",
@@ -85,12 +85,12 @@ let userData = {
   songCurrentTime: 0,
 };
 
-const playSong = (id) => {
+const playSong = (id) => { // implement play button
   const song = userData?.songs.find((song) => song.id === id);
   audio.src = song.src;
   audio.title = song.title;
 
-  if (userData?.currentSong === null || userData?.currentSong.id !== song.id) {
+  if (userData?.currentSong === null || userData?.currentSong.id !== song.id) { // starts song from beggining
     audio.currentTime = 0;
   } else {
     audio.currentTime = userData?.songCurrentTime;
@@ -101,7 +101,7 @@ const playSong = (id) => {
   audio.play();
 };
 
-const pauseSong = () => {
+const pauseSong = () => { // implement pause
   userData.songCurrentTime = audio.currentTime;
   
   playButton.classList.remove("playing");
@@ -168,7 +168,7 @@ nextButton.addEventListener("click", playNextSong);
 
 
 
-userData?.songs.sort((a,b) => {
+userData?.songs.sort((a,b) => { // sorts song alphabetically
   if (a.title < b.title) {
     return -1;
   }
